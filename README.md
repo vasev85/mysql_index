@@ -24,6 +24,8 @@ where date(p.payment_date) = '2005-07-30' and p.payment_date = r.rental_date and
 ```
 - перечислите узкие места, Использование Distinct, агрегация с группировкой по не относящемся полям c.customer_id, f.title которые не имеют ни какаой логики
 - оптимизируйте запрос 
+
+
 explain analyze
 select distinct concat(c.last_name, ' ', c.first_name),
 sum(p.amount) over (partition by c.customer_id, f.title)
